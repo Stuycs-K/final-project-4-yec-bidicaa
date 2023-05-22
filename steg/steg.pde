@@ -15,5 +15,12 @@ void setup(){
       //basically each filter is one function
     //window with picture
       //this part of the screen shows the image
-
-
+      
+void draw(){
+ pseudocode for each method:
+ for pixels in height:
+   for pixels in width:
+     redraw each pixel by calculating new val
+   make an arraylist of pixel values
+   redraw entire image in window based on values
+}
