@@ -3,7 +3,19 @@ PImage img;
 void setup(){
   size(1000,750);
   img = loadImage("Untitled.jpeg");
+  print("Select afile");
+  selectInput("Select a file to process:", "fileSelected");
 }
+
+void fileSelected(File selection) {
+  if (selection == null) {
+    println("Window was closed or the user hit cancel.");
+  } else {
+    println("User selected " + selection.getAbsolutePath());
+  }
+  
+}
+
 //windowResizable()
 
 void draw(){
