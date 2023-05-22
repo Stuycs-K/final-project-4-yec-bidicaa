@@ -1,6 +1,15 @@
+PImage img;
 
 void setup(){
-  size(500,500);
+  size(1000,750);
+  img = loadImage("Untitled.jpeg");
+}
+//windowResizable()
+
+void draw(){
+  stroke(0);
+  fill(0);
+  rect(0, 0, 250, height); 
 }
 
 //Filename Window
@@ -15,5 +24,3 @@ void setup(){
       //basically each filter is one function
     //window with picture
       //this part of the screen shows the image
-
-
