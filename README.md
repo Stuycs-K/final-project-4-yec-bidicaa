@@ -14,6 +14,6 @@ You need to run this in processing.
 When running the program in processing, the user will be prompted to type the name of the image they would like to use. Then, the user can select which color filter to use from a list of options. If the filter requires any input, the user can type it in before looking at the filter. 
 
 ## Links
-Link to [PRESENTATION.md](https://github.com/afiab/4.YeC.BidicaA/blob/main/PRESENTATION.md)
+Link to [PRESENTATION.md](https://github.com/Stuycs-K/final-project-4-yec-bidicaa/blob/main/PRESENTATION.md)
 
-Link to [HOMEWORK.md](https://github.com/afiab/4.YeC.BidicaA/blob/main/HOMEWORK.md)
+Link to [HOMEWORK.md](https://github.com/Stuycs-K/final-project-4-yec-bidicaa/blob/main/HOMEWORK.md)
