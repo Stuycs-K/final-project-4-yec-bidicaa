@@ -2,26 +2,42 @@ PImage img;
 
 void setup(){
   size(1000,750);
-  img = loadImage("Untitled.jpeg");
-  print("Select afile");
-  selectInput("Select a file to process:", "fileSelected");
-}
+  img = null;
 
-void fileSelected(File selection) {
-  if (selection == null) {
-    println("Window was closed or the user hit cancel.");
-  } else {
-    println("User selected " + selection.getAbsolutePath());
-  }
-  
 }
 
 //windowResizable()
 
 void draw(){
+  background(255);
+  
+  textSize(50);
+  fill(0);
+  text("Steg", 350, 100);
+  text("Select an image", 350, 400);
+  
   stroke(0);
   fill(0);
-  rect(0, 0, 250, height); 
+  //rect(300, 400, 350, 80);
+  
+  if(img != null){
+    image(img, 0, 0);
+  }
+}
+
+void mouseClicked(){
+  selectInput("Select a file to process:", "fileSelected");
+  //press button
+}
+
+void fileSelected(File selection){
+  if (selection == null) {
+    println("Window closed or cancelled.");
+  } else {
+    println("User selected " + selection.getAbsolutePath());
+    img = loadImage(selection.getAbsolutePath());
+  }
+  
 }
 
 //Filename Window
