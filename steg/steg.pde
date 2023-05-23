@@ -1,6 +1,6 @@
 
 void setup(){
-  size(500,500);
+  size(1000,750);
 }
 
 //Filename Window
@@ -16,11 +16,24 @@ void setup(){
     //window with picture
       //this part of the screen shows the image
       
-void draw(){
+void draw() {
+  background(0);
+  fill(255);
+  rect(0, 0, 250, 750);
+  int num_of_filts = 10; //how many filters will be used
+  // change ^variable to accomodate if we add/remove filters
+  for( int i=0; i<750; i+=(750/num_of_filts)){
+    rect(0, i, 250, (750/num_of_filts));
+  }
+}
+/*
  pseudocode for each method:
  for pixels in height:
    for pixels in width:
      redraw each pixel by calculating new val
    make an arraylist of pixel values
-   redraw entire image in window based on values
-}
+   redraw entire image in window based on values*/
+   
+// HOW ARE WE READING THE IMAGE??
+// I NEED TO KNOW THIS BEFORE CREATING FUNCTIONS
+// ^i added this because i keep forgetting to ask lol
