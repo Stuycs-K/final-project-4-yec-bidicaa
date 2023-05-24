@@ -1,33 +1,43 @@
 PImage img;
+Boolean mode;
 
 void setup(){
   size(1000,750);
   img = null;
+  mode = false;
 
 }
 
 //windowResizable()
 
 void draw(){
-  background(255);
-  
-  textSize(50);
-  fill(0);
-  text("Steg", 350, 100);
-  text("Select an image", 350, 400);
-  
-  stroke(0);
-  fill(0);
-  //rect(300, 400, 350, 80);
-  
+  if(!mode){
+    background(54, 85, 119);
+    
+    stroke(255);
+    strokeWeight(5);
+    fill(54, 85, 119);
+    rect(340, 345, 350, 80, 10);
+    
+    textSize(100);
+    fill(255);
+    text("Steg", 415, 280);
+    textSize(50);
+    text("Select an image", 350, 400);
+  }
+  if(mode){
+    background(0);
+  }
   if(img != null){
+    mode = true;
     image(img, 0, 0);
   }
 }
 
 void mouseClicked(){
-  selectInput("Select a file to process:", "fileSelected");
-  //press button
+  if(mouseX >= 340 && mouseX <= 340+350 && mouseY >= 345 && mouseX >= 345+80){
+    selectInput("Select a file to process:", "fileSelected");
+  } //press button
 }
 
 void fileSelected(File selection){
