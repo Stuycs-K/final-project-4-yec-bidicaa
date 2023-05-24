@@ -1,3 +1,10 @@
+<<<<<<< HEAD
 Afia Bidica | Christina Ye
 --- | ---
 5/19/2023 | 5/19/2023
+=======
+Date | Afia Bidica | Christina Ye
+--- | --- | ---
+5/19/2023 | Started researching possilbe implementations of resizing a window in processing. Looked at documentation for `size()`, `setResizeable()`, `windowResizeable()`, and `windowResize()`. Also found that processing has a `filter()` method to show an image through various modes. The processing function `mask()` can load another image and use it as an alpha channel, which would be useful for various color filters.| Started working on the opening window. Researched how to use `selectInput()` to select the image file for use.
+5/22/23 | Cloned stuff from old repo to this one (copied stuff into README and WORKLOG and committed code from the past two days). Added code to `draw()` to show the background of filter window.| Sucessfully figured out how to use `selectInput()` to display a chosen image file. Worked on text and sizing for opening window. Used `mouseclicked()` to call `selectInput()` function.
+>>>>>>> main
