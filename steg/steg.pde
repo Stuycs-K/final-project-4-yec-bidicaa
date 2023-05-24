@@ -1,39 +1,43 @@
 PImage img;
+Boolean mode;
 
 void setup(){
   size(1000,750);
   img = null;
+  mode = false;
 
 }
-
 //windowResizable()
 
 void draw(){
-  background(255);
-  
-  textSize(50);
-  fill(0);
-  text("Steg", 350, 100);
-  text("Select an image", 350, 400);
-  
-  stroke(0);
-  fill(0);
-  //rect(300, 400, 350, 80);
-  
+  if(!mode){
+    background(54, 85, 119);
+    
+    stroke(255);
+    strokeWeight(5);
+    fill(54, 85, 119);
+    rect(340, 345, 350, 80, 10);
+    
+    textSize(100);
+    fill(255);
+    text("Steg", 415, 280);
+    textSize(50);
+    text("Select an image", 350, 400);
+  }
+  if(mode){
+    background(50);
+    fill(255);
+    rect(0, 0, 250, 750);
+    int num_of_filts = 10; //how many filters will be used
+    // change ^variable to accomodate if we add/remove filters
+    for( int i=0; i<750; i+=(750/num_of_filts)){
+      rect(0, i, 250, (750/num_of_filts));
+    }
+  }
   if(img != null){
-    image(img, 0, 0);
+    mode = true;
+    image(img, 260, 10); // (Afia) changed x,y to go auto to display window
   }
-  
-  /*
-  background(0);
-  fill(255);
-  rect(0, 0, 250, 750);
-  int num_of_filts = 10; //how many filters will be used
-  // change ^variable to accomodate if we add/remove filters
-  for( int i=0; i<750; i+=(750/num_of_filts)){
-    rect(0, i, 250, (750/num_of_filts));
-  }
-  */
 }
 
 void mouseClicked(){
