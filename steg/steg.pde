@@ -1,13 +1,15 @@
 PImage img;
 Boolean mode;
+int num_of_filts;
 
 void setup(){
   size(1000,750);
   img = null;
   mode = false;
+  num_of_filts = 10; //how many filters will be used
+  // change ^variable to accomodate if we add/remove filters
 
 }
-
 //windowResizable()
 
 void draw(){
@@ -26,18 +28,36 @@ void draw(){
     text("Select an image", 350, 400);
   }
   if(mode){
-    background(0);
+    background(50);
+    fill(255);
+    rect(0, 0, 250, 750);
+    stroke(0);
+    for( int i=0; i<750; i+=(750/num_of_filts)){
+      rect(0, i, 250, (750/num_of_filts));
+    }
   }
   if(img != null){
     mode = true;
-    image(img, 0, 0);
+    image(img, 260, 10); // (Afia) changed x,y to go auto to display window
   }
 }
 
 void mouseClicked(){
-  if(mouseX >= 340 && mouseX <= 340+350 && mouseY >= 345 && mouseX >= 345+80){
+  if(!mode && mouseX >= 340 && mouseX <= 340+350 && mouseY >= 345 && mouseX >= 345+80){
     selectInput("Select a file to process:", "fileSelected");
-  } //press button
+  }
+  if(mode){
+    int funct_to_call = int(mouseY/(750/num_of_filts));
+    //tells us which box (0 through numoffilts-1) to call the function for
+    
+    /*
+    NEXT STEPS:
+    find if java allows arrays of functions (probably doesnt)
+    the idea was to call function at funct_to_call index in array
+    if no array for functions, then it'll just be if-elif-else chain
+    */
+  }
+  //press button
 }
 
 void fileSelected(File selection){
