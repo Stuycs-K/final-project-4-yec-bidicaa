@@ -31,6 +31,7 @@ void draw(){
     background(50);
     fill(255);
     rect(0, 0, 250, 750);
+    stroke(0);
     for( int i=0; i<750; i+=(750/num_of_filts)){
       rect(0, i, 250, (750/num_of_filts));
     }
