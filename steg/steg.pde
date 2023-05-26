@@ -51,7 +51,7 @@ void mouseClicked(){
       int funct_to_call = int(mouseY/(750/num_of_filts));
       //print(funct_to_call);
       //tells us which box (0 through numoffilts-1) to call the function for
-      fil(0); //first bit of red byte
+      fil(7); //first bit of red byte
     }
     
     /*
@@ -77,8 +77,9 @@ void fileSelected(File selection){
 void fil(int bitVal) {
   for(int i = 0; i < img.width * img.height; i++){
     int c = img.pixels[i];
+    int bit = (int)Math.pow(2, bitVal);
     int red = (int)red(c);
-    red = (red >> bitVal) & 1;
+    red = (red >> bitVal) & bit;
     img.pixels[i] = color(red * 255);
   }
   img.updatePixels();
