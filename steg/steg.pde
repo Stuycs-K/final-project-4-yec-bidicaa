@@ -73,25 +73,13 @@ void fileSelected(File selection){
   
 }
 
-/*for(int i = 0; i < img.pixels.length ; i++) {
-    int c = img.pixels[i];
-    int red = (c >> 16) & 255;
-    int green = (c >> 8) & 255;
-    int blue = c & 255;
-    
-    if (binMessage.length() > 0 && red % 4 == 0 && blue % 4 == 0) {
-      int b1 = binMessage.charAt(0) - '0';
-      binMessage = binMessage.substring(1);
-      int b2 = binMessage.charAt(0) - '0';
-      binMessage = binMessage.substring(1);
-      green = (green & 252) | (b1 << 1) | b2;
-    } else {
-      red = (red & 252) | 1;
-      blue = (blue & 252) | 1;
-    }
-    img.pixels[i] = color(red, green, blue);
+void fil(int bitVal) {
+  for(int i = 0; i < img.width * img.height; i++){
+    color c = img.pixels[i];
   }
-*/
+  img.updatePixels();
+}
+
 //Filename Window
   //this is a window at the start that sets var for file name
   //user types file name in the window then clicks enter 
