@@ -32,7 +32,7 @@ void draw(){
     fill(255);
     rect(0, 0, 250, 750);
     stroke(0);
-    for( int i=0; i<750; i+=(750/num_of_filts)){
+    for(int i=0; i<750; i+=(750/num_of_filts)){
       rect(0, i, 250, (750/num_of_filts));
     }
   }
@@ -43,12 +43,15 @@ void draw(){
 }
 
 void mouseClicked(){
-  if(!mode && mouseX >= 340 && mouseX <= 340+350 && mouseY >= 345 && mouseX >= 345+80){
+  if(!mode && mouseX >= 340 && mouseX <= 340+350 && mouseY >= 345 && mouseY <= 345+80){
     selectInput("Select a file to process:", "fileSelected");
   }
   if(mode){
-    int funct_to_call = int(mouseY/(750/num_of_filts));
-    //tells us which box (0 through numoffilts-1) to call the function for
+    if(mouseX >= 0 && mouseX <= 250){
+      int funct_to_call = int(mouseY/(750/num_of_filts));
+      //print(funct_to_call);
+      //tells us which box (0 through numoffilts-1) to call the function for
+    }
     
     /*
     NEXT STEPS:
@@ -70,7 +73,7 @@ void fileSelected(File selection){
   
 }
 
-for(int i = 0; i < img.pixels.length ; i++) {
+/*for(int i = 0; i < img.pixels.length ; i++) {
     int c = img.pixels[i];
     int red = (c >> 16) & 255;
     int green = (c >> 8) & 255;
@@ -88,7 +91,7 @@ for(int i = 0; i < img.pixels.length ; i++) {
     }
     img.pixels[i] = color(red, green, blue);
   }
-
+*/
 //Filename Window
   //this is a window at the start that sets var for file name
   //user types file name in the window then clicks enter 
