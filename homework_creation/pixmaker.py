@@ -2,6 +2,22 @@ import random
 from PIL import Image
 import math
 
+'''
+random number between 0 254
+modes are even, odd, any
+'''
+def rand(mode):
+    nums = random.randint(0, 254)
+    if mode == "even":
+        if nums %2 == 1:
+            nums+=1
+    elif mode == "odd":
+        if nums %2 == 0:
+            nums+=1
+    else:
+        return nums
+    return nums
+
 def process_image(input, output):
     with Image.open(input) as image:
         width, height = image.size
@@ -10,25 +26,9 @@ def process_image(input, output):
             for y in range(height):
                 pixel = image.getpixel((x, y))
                 if pixel == (255, 255, 255): #white pixel
-                    #make even red value
-                    #for bit to end in 0
-                    red = random.randint(0,254)
-                    if red%2 == 1:
-                        red+=1
-                    #print("even,", red)
-                    new_pixel = (red,# 0, 0)
-                                 random.randint(0, 255),
-                                 random.randint(0, 254))
+                    new_pixel = (rand("even"), rand("any"), rand("any"))
                 else: #black pixel
-                    #make odd red value
-                    #for bit to end in 1
-                    red = random.randint(1,255)
-                    if red%2 == 0:
-                        red+=1
-                    #print("odd", red)
-                    new_pixel = (red, #255, 255)
-                                 random.randint(0, 255),
-                                 random.randint(0, 255))
+                    new_pixel = (rand("odd"), rand("any"), int(rand("any")))
                 new_image.putpixel((x, y), new_pixel)
         new_image.save(output)
 
