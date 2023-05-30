@@ -21,7 +21,7 @@ def process_image(input, output):
                     #make odd red value
                     #for bit to end in 1
                     red = random.randint(1,255)
-                    if red%2 == 1:
+                    if red%2 == 0:
                         red+=1
                     new_pixel = (red,
                                  random.randint(0, 255),
