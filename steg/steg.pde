@@ -1,4 +1,5 @@
 PImage img;
+PImage imgnew;
 Boolean mode;
 int num_of_filts;
 
@@ -6,7 +7,7 @@ void setup(){
   size(1000,750);
   img = null;
   mode = false;
-  num_of_filts = 10; //how many filters will be used
+  num_of_filts = 32; //how many filters will be used
   // change ^variable to accomodate if we add/remove filters
 
 }
@@ -28,6 +29,10 @@ void draw(){
     text("Select an image", 350, 400);
   }
   if(mode){
+    fill(0);
+    textSize(50);
+    //text("Red plane 0", 5, 5);
+    
     background(50);
     fill(255);
     rect(0, 0, 250, 750);
@@ -49,9 +54,23 @@ void mouseClicked(){
   if(mode){
     if(mouseX >= 0 && mouseX <= 250){
       int funct_to_call = int(mouseY/(750/num_of_filts));
+      int col = funct_to_call/8;
+      int bit = funct_to_call%8;
+      String rgb = "";
+      if(col == 0){
+        rgb = "a";
+      } else if(col == 1){
+        rgb = "r";
+      } else if(col == 2){
+        rgb = "g";
+      } else if(col == 3){
+        rgb = "b";
+      }
       //print(funct_to_call);
+      print(col);
       //tells us which box (0 through numoffilts-1) to call the function for
-      fil(7); //first bit of red byte
+      fil(bit,rgb); //first bit of red byte
+      img = imgnew;
     }
     
     /*
@@ -70,17 +89,27 @@ void fileSelected(File selection){
   } else {
     println("User selected " + selection.getAbsolutePath());
     img = loadImage(selection.getAbsolutePath());
+    imgnew = img;
   }
   
 }
 
-void fil(int bitVal) {
+void fil(int bitVal, String rgb) {
   for(int i = 0; i < img.width * img.height; i++){
     int c = img.pixels[i];
     int bit = (int)Math.pow(2, bitVal);
-    int red = (int)red(c);
-    red = (red >> bitVal) & bit;
-    img.pixels[i] = color(red * 255);
+    int col = 0;
+    if(rgb == "r") {
+      col = (int)red(c);
+    } else if(rgb == "g") {
+      col = (int)green(c);
+    } else if(rgb == "b") {
+      col = (int)blue(c);
+    } else if(rgb == "a") {
+      col = (int)alpha(c);
+    }
+    col = (col & bit) >> bitVal;
+    img.pixels[i] = color(col * 255);
   }
   img.updatePixels();
 }
