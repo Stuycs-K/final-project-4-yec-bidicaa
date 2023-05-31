@@ -5,3 +5,5 @@ Date | Afia Bidica | Christina Ye
 5/23/23 | Merge main to my branch and copied Christina's button implementation over to my code to put my previous draw function under one of the button's conditions. Changed position of image display after chosen to be on the right part of the screen with a 10pxl border. Altered `mouseClicked()` to allow implementation of buttons by checking `mouseY()` and making `num_of_filts` a global variable.| Added a button to select a file and changed window displays.
 5/24/23 | Just fixed small typos on worklog and fixed minor merge errors on my branch. | Looked up how bits changed in stegSolve.
 5/25/23 | Started making homework. Used ibisPaint to make 700x700 pixel images with black and white pixels to hide flags. Made Python function that hides the image on red color plane.| Added to `mouseclicked()` function and created `fil()` function to modify red bits.
+5/30/23 | Continued trying to make the homework files. Not much progress since no wifi from 5/27 | 
+5/31/23 | Found a website to hide b/w images inside of color planes of another image. https://stegonline.georgeom.net/upload Making homework material and editing homework.md
