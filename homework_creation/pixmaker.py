@@ -30,12 +30,15 @@ def process_image(input, output):
         for x in range(width):
             for y in range(height):
                 pixel = image.getpixel((x, y))
-                red = 255#int(rand("any"))
+                red = int(rand("any"))
                 if pixel == (255, 255, 255): #white pixel
-                    new_pixel = (red, 255, 255)
-                    #new_pixel = (set_bit(red, 4), rand("any"), rand("any"))
+                    #red = set_bit(red,4)
+                    red = set_bit(red,5)
+                    new_pixel = (red, rand("any"), rand("any"))
                 else: #black pixel
-                    new_pixel = (clear_bit(red, 1), 255, 255)
+                    #red = clear_bit(red,4)
+                    red = clear_bit(red,5)
+                    new_pixel = (set_bit(red, 4), rand("any"), rand("any"))
                 new_image.putpixel((x, y), new_pixel)
         new_image.save(output)
 
