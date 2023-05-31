@@ -29,10 +29,6 @@ void draw(){
     text("Select an image", 350, 400);
   }
   if(mode){
-    fill(0);
-    textSize(50);
-    //text("Red plane 0", 5, 5);
-    
     background(50);
     fill(255);
     rect(0, 0, 250, 750);
@@ -40,6 +36,10 @@ void draw(){
     for(int i=0; i<750; i+=(750/num_of_filts)){
       rect(0, i, 250, (750/num_of_filts));
     }
+    
+    fill(0);
+    textSize(15);
+    text("Red plane 0", 10, 200);
   }
   if(img != null){
     mode = true;
@@ -114,6 +114,13 @@ void fil(int bitVal, String rgb) {
   img.updatePixels();
 }
 
+void keyPressed(){ //testing purposes
+  if(key == 'm' && mode == true){
+    mode = false;
+  } else if(key == 'm' && mode == false){
+    mode = true;
+  } 
+}
 //Filename Window
   //this is a window at the start that sets var for file name
   //user types file name in the window then clicks enter 
