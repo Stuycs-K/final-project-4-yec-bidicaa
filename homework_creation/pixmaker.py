@@ -1,6 +1,5 @@
 import random
 from PIL import Image
-import math
 
 '''
 random number between 0 254
@@ -18,6 +17,12 @@ def rand(mode):
         return nums
     return nums
 
+def set_bit(value, bit):
+    return value | (1<<bit)
+
+def clear_bit(value, bit):
+    return value & ~(1<<bit)
+
 def process_image(input, output):
     with Image.open(input) as image:
         width, height = image.size
@@ -25,10 +30,12 @@ def process_image(input, output):
         for x in range(width):
             for y in range(height):
                 pixel = image.getpixel((x, y))
+                red = 255#int(rand("any"))
                 if pixel == (255, 255, 255): #white pixel
-                    new_pixel = (rand("even"), rand("any"), rand("any"))
+                    new_pixel = (red, 255, 255)
+                    #new_pixel = (set_bit(red, 4), rand("any"), rand("any"))
                 else: #black pixel
-                    new_pixel = (rand("odd"), rand("any"), int(rand("any")))
+                    new_pixel = (clear_bit(red, 1), 255, 255)
                 new_image.putpixel((x, y), new_pixel)
         new_image.save(output)
 
