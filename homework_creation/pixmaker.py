@@ -33,12 +33,12 @@ def process_image(input, output):
                 red = int(rand("any"))
                 if pixel == (255, 255, 255): #white pixel
                     #red = set_bit(red,4)
-                    red = set_bit(red,5)
+                    red = set_bit(red,7)
                     new_pixel = (red, rand("any"), rand("any"))
                 else: #black pixel
                     #red = clear_bit(red,4)
-                    red = clear_bit(red,5)
-                    new_pixel = (set_bit(red, 4), rand("any"), rand("any"))
+                    red = clear_bit(red,7)
+                    new_pixel = (red, rand("any"), rand("any"))
                 new_image.putpixel((x, y), new_pixel)
         new_image.save(output)
 
