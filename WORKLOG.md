@@ -6,4 +6,4 @@ Date | Afia Bidica | Christina Ye
 5/24/23 | Just fixed small typos on worklog and fixed minor merge errors on my branch. | Looked up how bits changed in stegSolve.
 5/25/23 | Started making homework. Used ibisPaint to make 700x700 pixel images with black and white pixels to hide flags. Made Python function that hides the image on red color plane.| Added to `mouseclicked()` function and created `fil()` function to modify red bits.
 5/30/23 | Continued trying to make the homework files. Not much progress since no wifi from 5/27 | 
-5/31/23 | Found a website to hide b/w images inside of color planes of another image. https://stegonline.georgeom.net/upload Making homework material and editing homework.md
+5/31/23 | Found a website to hide b/w images inside of color planes of another image. https://stegonline.georgeom.net/upload Created b/w images for the homeworks and hid them in normal images found in the IMAGES directory. Made questions 0-4 of homework and updated HOMEWORK.md. Also did a lot in PRESENTATION.md. Also used the code I was trying to debug from the past few days to make an example of bad image hiding in the presentation file.
