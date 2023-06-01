@@ -3,10 +3,7 @@ Final Project Repo for Pd4 Cyber
 
 ## Project Description
 This is a recreation of most of stegsolve's features. 
-Some of the planes we will cover are:
-+ Different color filters, such as showing only the pixels with red, green, or blue values.
-+ Showing only pixels with a certain rgba value.
-+ (and more)
+So far, we've covered bit planes for rbg values.
 
 ## Usage
 To use this, clone our github repository and open `steg.pde` in processing. Then run the file.
