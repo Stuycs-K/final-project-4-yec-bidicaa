@@ -2,9 +2,11 @@ PImage img;
 PImage imgnew;
 Boolean mode;
 int num_of_filts;
+int funct_to_call = 0;
+String label = "";
 
 void setup(){
-  size(1000,750);
+  size(750,750);
   img = null;
   mode = false;
   num_of_filts = 32; //how many filters will be used
@@ -20,67 +22,86 @@ void draw(){
     stroke(255);
     strokeWeight(5);
     fill(54, 85, 119);
-    rect(340, 345, 350, 80, 10);
+    rect(200, 345, 350, 80, 10);
     
     textSize(100);
     fill(255);
-    text("Steg", 415, 280);
+    text("Steg", 275, 280);
     textSize(50);
-    text("Select an image", 350, 400);
+    text("Select an image", 210, 400);
   }
   if(mode){
-    background(50);
-    fill(255);
-    rect(0, 0, 250, 750);
-    stroke(0);
-    for(int i=0; i<750; i+=(750/num_of_filts)){
-      rect(0, i, 250, (750/num_of_filts));
-    }
+    String rgb = "";
     
-    fill(0);
-    textSize(15);
-    text("Red plane 0", 10, 200);
+    background(50);
+    fill(50);
+    stroke(255);
+    strokeWeight(3);
+    rect(320, 700, 50, 30, 10);
+    rect(380, 700, 50, 30, 10);
+    textSize(30);
+    fill(255);
+    text("<", 338, 725);
+    text(">", 398, 725);
+    
+    if(funct_to_call == 0){
+      label = "Normal Image";
+      //img = imgnew;
+      //img.updatePixels();
+    }
+    if(funct_to_call >= 2 && funct_to_call <= 33){
+      img = imgnew;
+      img.updatePixels();
+      int col = (funct_to_call-2)/8;
+      int bit = 7-(funct_to_call - 2)%8;
+      
+      if(col == 0){
+        rgb = "r";
+        label = "Red Plane ";
+      } else if(col == 2){
+        rgb = "g";
+        label = "Green Plane ";
+      } else if(col == 3){
+        rgb = "b";
+        label = "Blue Plane ";
+      }
+      fil(bit,rgb);
+      label += str(bit);
+    }
+    fill(255);
+    textSize(20);
+    text(label, 10, 20);
+    
+   //print(funct_to_call);
   }
+  
   if(img != null){
     mode = true;
-    image(img, 260, 10); // (Afia) changed x,y to go auto to display window
+    image(img, 0, 30); // (Afia) changed x,y to go auto to display window
   }
 }
 
 void mouseClicked(){
-  if(!mode && mouseX >= 340 && mouseX <= 340+350 && mouseY >= 345 && mouseY <= 345+80){
+  if(!mode && mouseX >= 200 && mouseX <= 200+350 && mouseY >= 345 && mouseY <= 345+80){
     selectInput("Select a file to process:", "fileSelected");
   }
   if(mode){
-    if(mouseX >= 0 && mouseX <= 250){
-      int funct_to_call = int(mouseY/(750/num_of_filts));
-      int col = funct_to_call/8;
-      int bit = funct_to_call%8;
-      String rgb = "";
-      if(col == 0){
-        rgb = "a";
-      } else if(col == 1){
-        rgb = "r";
-      } else if(col == 2){
-        rgb = "g";
-      } else if(col == 3){
-        rgb = "b";
+    if(mouseX >= 320 && mouseX <= 320+50 && mouseY >= 700 && mouseY <= 700+30){
+      if(funct_to_call == 0){
+        funct_to_call = 33;
+      } else {
+        funct_to_call--;
       }
-      //print(funct_to_call);
-      print(col);
-      //tells us which box (0 through numoffilts-1) to call the function for
-      fil(bit,rgb); //first bit of red byte
-      img = imgnew;
     }
+    if(mouseX >= 380 && mouseX <= 380+50 && mouseY >= 700 && mouseY <= 700+30){
+      if(funct_to_call == 33){
+        funct_to_call = 0;
+      } else {
+        funct_to_call++;
+      }
+    }
+   }
     
-    /*
-    NEXT STEPS:
-    find if java allows arrays of functions (probably doesnt)
-    the idea was to call function at funct_to_call index in array
-    if no array for functions, then it'll just be if-elif-else chain
-    */
-  }
-  //press button
 }
 
 void fileSelected(File selection){
@@ -89,7 +110,7 @@ void fileSelected(File selection){
   } else {
     println("User selected " + selection.getAbsolutePath());
     img = loadImage(selection.getAbsolutePath());
-    imgnew = img;
+    //imgnew = loadImage(selection.getAbsolutePath());
   }
   
 }
@@ -114,7 +135,25 @@ void fil(int bitVal, String rgb) {
   img.updatePixels();
 }
 
-void keyPressed(){ //testing purposes
+void keyPressed(){
+  if(keyCode == RIGHT && mode){
+    if(funct_to_call == 33){
+        funct_to_call = 0;
+      } else {
+        funct_to_call++;
+      }
+  }
+  if(keyCode == LEFT && mode){
+    if(funct_to_call == 0){
+        funct_to_call = 33;
+      } else {
+        funct_to_call--;
+      }
+  }
+  //testing purposes
+  if(key == 'p'){
+    selectInput("Select a file to process:", "fileSelected");
+  }
   if(key == 'm' && mode == true){
     mode = false;
   } else if(key == 'm' && mode == false){
