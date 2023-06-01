@@ -8,10 +8,10 @@ Some of the planes we will cover are:
 + Showing only pixels with a certain rgba value.
 + (and more)
 
-## Usage (Draft)
-You need to run this in processing.
+## Usage
+To use this, clone our github repository and open `steg.pde` in processing. Then run the file.
 
-When running the program in processing, the user will be prompted to type the name of the image they would like to use. Then, the user can select which color filter to use from a list of options. If the filter requires any input, the user can type it in before looking at the filter. 
+When you first run the program, you will have to click on the button in the middle of the window to open a file explorer to choose an image to look at. The steg directory in our repository has an example image, `cat.jpg`, for you to get started. Then, you can go between different bit planes to view the image.
 
 ## Links
 Link to [PRESENTATION.md](https://github.com/Stuycs-K/final-project-4-yec-bidicaa/blob/main/PRESENTATION.md)
