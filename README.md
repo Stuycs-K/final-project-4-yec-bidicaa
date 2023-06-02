@@ -9,7 +9,7 @@ This is a recreation of most of stegsolve's features.
 Here's what we've covered (in order of appearance):
 - Color inversion (xor)
 - Alpha bit planes
-- RBG bit planes
+- RGB bit planes
 - full Alpha plane
 - RGB color planes
 
