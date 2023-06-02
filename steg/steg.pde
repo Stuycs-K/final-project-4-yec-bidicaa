@@ -13,9 +13,10 @@ void setup(){
   // change ^variable to accomodate if we add/remove filters
 
 }
-//windowResizable()
 
 void draw(){
+  //Filename Window
+  //window start that sets var for file name
   if(!mode){
     background(54, 85, 119);
     
@@ -46,8 +47,19 @@ void draw(){
     
     if(funct_to_call == 0){
       label = "Normal Image";
-    }
-    if(funct_to_call >= 2 && funct_to_call <= 33){
+      
+    } else if(funct_to_call == 1){
+      //xor
+        color c = img.pixels[i];
+        int r = ((int)red(c) ^ 255);
+        int g = ((int)green(c) ^ 255);
+        int b = ((int)blue(c) ^ 255);
+        imgnew.pixels[i] = color(r, g, b);
+      }
+      imgnew.updatePixels();
+      label = "Color Inversion (Xor)";
+      
+    } else if(funct_to_call >= 2 && funct_to_call <= 33){
       int col = (funct_to_call-2)/8;
       int bit = 7-(funct_to_call - 2)%8;
       
@@ -66,12 +78,23 @@ void draw(){
       }
       fil(bit,rgb);
       label += str(bit);
+    } else if(funct_to_call == 34){
+      label = "Full Alpha";
+      fil(9,"a");
+    } else if(funct_to_call == 35){
+      label = "Full Red";
+      fil(9,"r");
+    } else if(funct_to_call == 36){
+      label = "Full Green";
+      fil(9,"g");
+    } else if(funct_to_call == 37){
+      label = "Full Blue";
+      fil(9,"b");
     }
     fill(255);
     textSize(20);
     text(label, 10, 20);
     
-   //print(funct_to_call);
   }
   
   if(img != null){
@@ -82,6 +105,7 @@ void draw(){
     image(imgnew, 0, 30);
     }
   }
+  
 }
 
 void mouseClicked(){
@@ -91,20 +115,21 @@ void mouseClicked(){
   if(mode){
     if(mouseX >= 320 && mouseX <= 320+50 && mouseY >= 700 && mouseY <= 700+30){
       if(funct_to_call == 0){
-        funct_to_call = 33;
+        funct_to_call = 37;
       } else {
         funct_to_call--;
       }
     }
     if(mouseX >= 380 && mouseX <= 380+50 && mouseY >= 700 && mouseY <= 700+30){
-      if(funct_to_call == 33){
+      if(funct_to_call == 37){
         funct_to_call = 0;
       } else {
         funct_to_call++;
       }
     }
-   }
     
+   }
+
 }
 
 void fileSelected(File selection){
@@ -115,32 +140,43 @@ void fileSelected(File selection){
     img = loadImage(selection.getAbsolutePath());
     imgnew = img.copy();
   }
-  
 }
 
 void fil(int bitVal, String rgb) {
   for(int i = 0; i < img.width * img.height; i++){
     int c = img.pixels[i];
-    int bit = (int)Math.pow(2, bitVal);
-    int col = 0;
-    if(rgb == "r") {
-      col = (int)red(c);
-    } else if(rgb == "g") {
-      col = (int)green(c);
-    } else if(rgb == "b") {
-      col = (int)blue(c);
-    } else if(rgb == "a") {
-      col = (int)alpha(c);
-    }
-    col = (col & bit) >> bitVal;
-    imgnew.pixels[i] = color(col * 255);
+    if(bitVal == 9){
+      if(rgb == "r") {
+        imgnew.pixels[i] = color((int)red(c), 0, 0);
+      } else if(rgb == "g") {
+        imgnew.pixels[i] = color(0, (int)green(c), 0);
+      } else if(rgb == "b") {
+        imgnew.pixels[i] = color(0, 0, (int)blue(c));
+      } else if(rgb == "a") {
+        imgnew.pixels[i] = color((int)alpha(c),0,0,0);
+      }
+    } else {
+      int bit = (int)Math.pow(2, bitVal);
+      int col = 0;
+      if(rgb == "r") {
+        col = (int)red(c);
+      } else if(rgb == "g") {
+        col = (int)green(c);
+      } else if(rgb == "b") {
+        col = (int)blue(c);
+      } else if(rgb == "a") {
+        col = (int)alpha(c);
+      }
+      col = (col & bit) >> bitVal;
+      imgnew.pixels[i] = color(col * 255);
+    }  
   }
   imgnew.updatePixels();
 }
 
 void keyPressed(){
   if(keyCode == RIGHT && mode){
-    if(funct_to_call == 33){
+    if(funct_to_call == 37){
         funct_to_call = 0;
       } else {
         funct_to_call++;
@@ -148,7 +184,7 @@ void keyPressed(){
   }
   if(keyCode == LEFT && mode){
     if(funct_to_call == 0){
-        funct_to_call = 33;
+        funct_to_call = 37;
       } else {
         funct_to_call--;
       }
@@ -163,15 +199,5 @@ void keyPressed(){
     mode = true;
   } 
 }
-//Filename Window
-  //this is a window at the start that sets var for file name
-  //user types file name in the window then clicks enter 
-    //if the file is not valid, call the filename window again
-    //else, go to filters
-//Filters window
-  //option/list
-    //everytime a filter is chosen from list
-      //a function is called to redraw the window
-      //basically each filter is one function
-    //window with picture
-      //this part of the screen shows the image
+
+    
