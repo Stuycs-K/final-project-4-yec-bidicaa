@@ -1,10 +1,6 @@
 import random
 from PIL import Image
 
-'''
-random number between 0 254
-modes are even, odd, any
-'''
 def rand(mode):
     return random.randint(0, 254)
 
