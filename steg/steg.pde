@@ -1,7 +1,6 @@
 PImage img;
 PImage imgnew;
 Boolean mode;
-int num_of_filts;
 int funct_to_call = 0;
 String label = "";
 
@@ -9,9 +8,6 @@ void setup(){
   size(750,750);
   img = null;
   mode = false;
-  num_of_filts = 32; //how many filters will be used
-  // change ^variable to accomodate if we add/remove filters
-
 }
 
 void draw(){
@@ -127,9 +123,7 @@ void mouseClicked(){
         funct_to_call++;
       }
     }
-    
    }
-
 }
 
 void fileSelected(File selection){
@@ -189,7 +183,7 @@ void keyPressed(){
         funct_to_call--;
       }
   }
-  //testing purposes
+  //test
   if(key == 'p'){
     selectInput("Select a file to process:", "fileSelected");
   }
