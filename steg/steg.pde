@@ -49,7 +49,7 @@ void draw(){
       label = "Normal Image";
       
     } else if(funct_to_call == 1){
-      //xor
+      for(int i = 0; i < img.width * img.height; i++){
         color c = img.pixels[i];
         int r = ((int)red(c) ^ 255);
         int g = ((int)green(c) ^ 255);
