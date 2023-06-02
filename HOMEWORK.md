@@ -1,6 +1,8 @@
 # Homework: Finding Flags
 Other than question zero, you will be doing a ctf challenge for this homework.
 
+Submit flags on a plain text file to Google Classroom.
+
 ### 00. Finding out if you paid attention
 Who is the character at the end of our presentation image?
 
