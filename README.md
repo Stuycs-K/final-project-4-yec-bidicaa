@@ -1,9 +1,17 @@
-# 4.YeC.BidicaA
-Final Project Repo for Pd4 Cyber
+# ABCY
+Christina Ye and Afia Bidica
+
+Final project repository for Pd04 Cybersecurity
 
 ## Project Description
 This is a recreation of most of stegsolve's features. 
-So far, we've covered bit planes for rbg values.
+
+Here's what we've covered (in order of appearance):
+- Color inversion (xor)
+- Alpha bit planes
+- RBG bit planes
+- full Alpha plane
+- RGB color planes
 
 ## Usage
 To use this, clone our github repository and open `steg.pde` in processing. Then run the file.
