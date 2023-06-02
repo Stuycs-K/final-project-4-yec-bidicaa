@@ -46,16 +46,15 @@ void draw(){
     
     if(funct_to_call == 0){
       label = "Normal Image";
-      //img = imgnew;
-      //img.updatePixels();
     }
     if(funct_to_call >= 2 && funct_to_call <= 33){
-      img = imgnew;
-      img.updatePixels();
       int col = (funct_to_call-2)/8;
       int bit = 7-(funct_to_call - 2)%8;
       
       if(col == 0){
+        rgb = "a";
+        label = "Alpha Plane ";
+      } else if(col == 1){
         rgb = "r";
         label = "Red Plane ";
       } else if(col == 2){
@@ -77,7 +76,11 @@ void draw(){
   
   if(img != null){
     mode = true;
-    image(img, 0, 30); // (Afia) changed x,y to go auto to display window
+    if(funct_to_call == 0){
+      image(img, 0, 30);
+    } else {
+    image(imgnew, 0, 30);
+    }
   }
 }
 
@@ -110,7 +113,7 @@ void fileSelected(File selection){
   } else {
     println("User selected " + selection.getAbsolutePath());
     img = loadImage(selection.getAbsolutePath());
-    //imgnew = loadImage(selection.getAbsolutePath());
+    imgnew = img.copy();
   }
   
 }
@@ -130,9 +133,9 @@ void fil(int bitVal, String rgb) {
       col = (int)alpha(c);
     }
     col = (col & bit) >> bitVal;
-    img.pixels[i] = color(col * 255);
+    imgnew.pixels[i] = color(col * 255);
   }
-  img.updatePixels();
+  imgnew.updatePixels();
 }
 
 void keyPressed(){
